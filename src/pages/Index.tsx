@@ -1,19 +1,14 @@
-import Header from "@/components/Header";
-import Hero from "@/components/Hero";
-import ProductGrid from "@/components/ProductGrid";
-import Footer from "@/components/Footer";
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Index = () => {
-  return (
-    <div className="min-h-screen flex flex-col">
-      <Header />
-      <main className="flex-1">
-        <Hero />
-        <ProductGrid />
-      </main>
-      <Footer />
-    </div>
-  );
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    navigate("/collections");
+  }, [navigate]);
+
+  return null;
 };
 
 export default Index;

@@ -1,32 +1,41 @@
-import { ShoppingCart } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { NavLink } from "react-router-dom";
 
 const Header = () => {
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container flex h-16 items-center justify-between">
         <div className="flex items-center gap-8">
-          <a href="/" className="text-xl font-bold">
-            LUXE
-          </a>
+          <div className="flex flex-col">
+            <span className="text-xl font-bold">LUXE</span>
+            <span className="text-xs text-muted-foreground">ADMIN</span>
+          </div>
           <nav className="hidden md:flex gap-6">
-            <a href="#products" className="text-sm font-medium hover:text-accent transition-colors">
-              Products
-            </a>
-            <a href="#about" className="text-sm font-medium hover:text-accent transition-colors">
-              About
-            </a>
-            <a href="#contact" className="text-sm font-medium hover:text-accent transition-colors">
-              Contact
-            </a>
+            <NavLink 
+              to="/collections" 
+              className={({ isActive }) => 
+                `text-sm font-medium transition-colors ${isActive ? 'text-accent' : 'text-foreground hover:text-accent'}`
+              }
+            >
+              Collections
+            </NavLink>
+            <NavLink 
+              to="/products" 
+              className={({ isActive }) => 
+                `text-sm font-medium transition-colors ${isActive ? 'text-accent' : 'text-foreground hover:text-accent'}`
+              }
+            >
+              Products & Variants
+            </NavLink>
+            <NavLink 
+              to="/orders" 
+              className={({ isActive }) => 
+                `text-sm font-medium transition-colors ${isActive ? 'text-accent' : 'text-foreground hover:text-accent'}`
+              }
+            >
+              Orders
+            </NavLink>
           </nav>
         </div>
-        <Button variant="ghost" size="icon" className="relative">
-          <ShoppingCart className="h-5 w-5" />
-          <span className="absolute -top-1 -right-1 h-5 w-5 rounded-full bg-accent text-accent-foreground text-xs flex items-center justify-center">
-            0
-          </span>
-        </Button>
       </div>
     </header>
   );
